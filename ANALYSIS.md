@@ -300,22 +300,6 @@ Gateway (9000)
     - Fallback: /fallbackRoute (503 Service Unavailable)
 ```
 
-#### 🔒 Sécurité:
-- **OAuth2 Resource Server** avec Keycloak
-- **Issuer URI**: http://localhost:8181/realms/springcommerce
-- Valide les JWT tokens
-
-#### ⚡ Résilience (Resilience4J):
-Configuration par défaut appliquée à tous les circuits:
-- **Sliding Window Type**: COUNT_BASED
-- **Sliding Window Size**: 10 appels
-- **Failure Rate Threshold**: 50%
-- **Wait Duration (Open → Half-Open)**: 5 secondes
-- **Permitted Calls in Half-Open**: 3
-- **Minimum Number of Calls**: 5
-- **Timeout**: 3 secondes
-- **Retry**: Max 3 tentatives avec délai de 2s
-
 #### 📚 Dépendances clés:
 - spring-cloud-starter-gateway-mvc
 - spring-boot-starter-oauth2-resource-server
@@ -581,65 +565,4 @@ Service Processing
   ↓
 Database Access (avec credentials stockés en config)
 ```
-
----
-
-## 📈 Améliorations Futures
-
-1. **Service Discovery**: Ajouter Consul ou Eureka
-2. **Config Server**: Centralized configuration management
-3. **Event Sourcing**: Archiver tous les événements
-4. **CQRS**: Séparation lecture/écriture
-5. **Saga Orchestrator**: Pattern Choreography → Orchestration
-6. **Message Deduplication**: Garantir l'idempotence
-7. **Containerization**: Dockerfile for each service
-8. **CI/CD**: Jenkins / GitHub Actions
-9. **Load Testing**: Performance testing et optimization
-10. **Security**: API key management, rate limiting, CORS configuration
-
----
-
-## 📚 Ressources Utilisées
-
-- [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-- [Spring Cloud Gateway](https://spring.io/projects/spring-cloud-gateway)
-- [Spring Data MongoDB](https://spring.io/projects/spring-data-mongodb)
-- [Spring Kafka](https://spring.io/projects/spring-kafka)
-- [Resilience4J](https://resilience4j.readme.io/)
-- [Micrometer](https://micrometer.io/)
-- [Docker & Docker Compose](https://www.docker.com/)
-
----
-
-## 🎓 Architecture Patterns Appliqués
-
-| Pattern | Utilisation |
-|---------|------------|
-| **Microservices** | Décomposition du système en services indépendants |
-| **API Gateway** | Point d'entrée unique, routage, sécurité |
-| **Database per Service** | Autonomie des données par service |
-| **Event-Driven** | Kafka pour couplage faible |
-| **Circuit Breaker** | Resilience4J pour fault tolerance |
-| **Service-to-Service Call** | RestClient avec retry/timeout |
-| **Observability** | Logs, Metrics, Traces centralisés |
-| **Health Checks** | Actuator endpoints pour la surveillance |
-
----
-
-## 💡 Points Clés à Retenir
-
-✅ **Indépendance**: Chaque service a sa propre BD, framework, et port  
-✅ **Autonomie**: Déploiement indépendant possible  
-✅ **Résilience**: Circuit Breaker, Retry, Timeout intégrés  
-✅ **Observable**: Logs, Metrics, Traces centralisés  
-✅ **Sécurisé**: OAuth2 via Keycloak  
-✅ **Scalable**: Chaque service peut être scalé indépendamment  
-✅ **Testable**: TestContainers pour les tests d'intégration  
-✅ **Event-Driven**: Kafka pour la communication asynchrone  
-
----
-
-**Généré**: 14 Novembre 2025
-**Version**: 1.0
-**État**: Complet et Prêt pour Adaptation
 
